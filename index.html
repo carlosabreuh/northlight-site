@@ -127,6 +127,34 @@ p{margin:0}
 .fbar{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
 .fstatus{font-size:.85rem;color:var(--muted)}
 @media (max-width:520px){.f2{grid-template-columns:1fr}}
+/* pricing / process / faq / area */
+.rates{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.rate{padding:1.4rem 1.5rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:.4rem;align-content:start;min-width:0}
+.rate .eyebrow{color:var(--accent)}
+.rate b{font-family:var(--display);font-weight:300;font-size:1.9rem;line-height:1;font-variant-numeric:tabular-nums}
+.rate b small{font-family:var(--body);font-size:.8rem;color:var(--muted);margin-left:.3rem}
+.rate p{font-size:.9rem;color:var(--muted)}
+.rate-note{margin-top:1rem;font-size:.85rem;color:var(--muted);max-width:60ch}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;counter-reset:step}
+.step{display:grid;gap:.5rem;align-content:start;padding-top:1rem;border-top:1px solid var(--line);position:relative}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--accent)}
+.step p{color:var(--muted);font-size:.95rem}
+.faq{display:grid;gap:0;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;padding:1rem 0;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--accent);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 1.1rem;color:var(--muted);max-width:65ch}
+.area{display:grid;grid-template-columns:1fr 2fr;gap:2rem}
+.area ul{margin:0;padding:0;list-style:none;columns:2;column-gap:2rem;font-size:.95rem;color:var(--muted)}
+.area li{break-inside:avoid;padding:.25rem 0;border-bottom:1px solid var(--line)}
+.area li b{color:var(--fg);font-weight:500}
+.legal{font-size:.85rem;color:var(--muted);max-width:65ch;display:grid;gap:.6rem}
+.legal h2{font-size:1.3rem}
+footer .wrap a{color:inherit}
+@media (max-width:860px){.rates{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.area{grid-template-columns:1fr}.area ul{columns:1}}
+@media (max-width:520px){.rates{grid-template-columns:1fr}}
 footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
 
 @media (max-width:760px){
@@ -241,6 +269,74 @@ footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap
   </div>
 </section>
 
+<section class="band" id="pricing">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>Starting prices</h2>
+      <p>Flat, published starting points so you can budget before you call. Every quote is fixed before the flight; no surprise hours.</p>
+    </div>
+    <div class="rates">
+      <div class="rate"><div class="eyebrow">Real estate</div><b>$350<small>from</small></b><p>Exterior stills + 60–90 s edit, MLS and social formats, 48-hour delivery. Twilight add-on available.</p></div>
+      <div class="rate"><div class="eyebrow">Cinematic</div><b>$1,200<small>half day</small></b><p>Up to 4 hours on set, 5.4K / 4K60 D-Log, LUT-matched delivery. Full day and multi-day rates on request.</p></div>
+      <div class="rate"><div class="eyebrow">Inspection</div><b>$500<small>from</small></b><p>Roof or facade photo set with annotated findings, per building. Recurring schedules discounted.</p></div>
+      <div class="rate"><div class="eyebrow">Mapping</div><b>Quoted<small>per site</small></b><p>Orthomosaic, DSM and 3D mesh with ground control. Priced on acreage and revisit frequency.</p></div>
+    </div>
+    <p class="rate-note">Travel within Middlesex and Union counties is included. Beyond that, mileage at the IRS rate. NYC jobs add the NYPD permit fee ($150) and permit lead time. Rush delivery and licensed music available.</p>
+  </div>
+</section>
+
+<section class="band" id="process">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>How it works</h2>
+      <p>Three steps from first message to delivered files, usually inside a week.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Send the where and when</h3><p>Address or site, your date window, and what you need delivered. We reply within one business day with a fixed quote.</p></div>
+      <div class="step"><h3>We clear the airspace</h3><p>Airspace check, LAANC authorization, NYPD permit if it's in the five boroughs, property access, and a weather window. You get a confirmed flight date.</p></div>
+      <div class="step"><h3>Fly and deliver</h3><p>On site with a pre-flight checklist, then files in your inbox within 48 hours: graded video, stills, or inspection and mapping deliverables, with full usage rights.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>Questions people ask</h2>
+      <p>If yours isn't here, put it in the quote form and we'll answer it with the estimate.</p>
+    </div>
+    <div class="faq">
+      <details><summary>Are you licensed and insured?</summary><p>Yes. Flights are under an FAA Part 107 Remote Pilot Certificate with general liability coverage that includes UAS operations. A certificate of insurance naming your company is available on request, usually the same day.</p></details>
+      <details><summary>Can you fly in New York City?</summary><p>Yes, with a permit. NYC requires an NYPD permit for every takeoff and landing location, which takes about 30 days. We handle the application; it adds the city's $150 fee and that lead time to the schedule.</p></details>
+      <details><summary>What if the weather is bad on the day?</summary><p>We don't fly in rain, snow, or winds above the aircraft's limits. If the window is lost, we reschedule to the next clear day at no charge. Forecasts are checked 48 hours out and again the morning of.</p></details>
+      <details><summary>Who owns the footage?</summary><p>You do. Delivered files come with full usage rights for your listing, project, or campaign. We may ask to use a few clips in our own portfolio, and we'll skip that if you prefer.</p></details>
+      <details><summary>Do you edit, or just deliver raw clips?</summary><p>Both. Real estate packages include a finished edit with music; cinematic work is delivered graded or as log footage for your editor, whichever your post team prefers. Inspection and mapping deliverables are processed and annotated.</p></details>
+      <details><summary>How close can you get to a building for inspection?</summary><p>Close enough to read fasteners and sealant lines. Flights are planned at a safe standoff with overlapping frames, and we coordinate with building management on timing and pedestrian areas below.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="area">
+  <div class="wrap">
+    <div class="area">
+      <div>
+        <h2>Where we fly</h2>
+        <p style="color:var(--muted);margin-top:.75rem">Based in Avenel, Middlesex County. Day-rate work anywhere in the tri-state; the areas below are our regular range.</p>
+      </div>
+      <ul>
+        <li><b>Middlesex</b> — Woodbridge, Edison, New Brunswick, Perth Amboy</li>
+        <li><b>Union</b> — Elizabeth, Rahway, Linden, Westfield</li>
+        <li><b>Monmouth</b> — Red Bank, Long Branch, the Shore towns</li>
+        <li><b>Hudson</b> — Jersey City, Hoboken, Bayonne</li>
+        <li><b>Essex &amp; Bergen</b> — Newark, Montclair, Hackensack</li>
+        <li><b>Staten Island</b> — all neighborhoods</li>
+        <li><b>Brooklyn, Queens, Manhattan</b> — with NYPD permit</li>
+        <li><b>Long Island</b> — Nassau and western Suffolk</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="contact" id="contact">
   <div class="wrap">
     <div>
@@ -280,7 +376,17 @@ footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap
   </div>
 </section>
 
-<footer><div class="wrap"><span>© 2026 Northlight Aerial Services LLC · NLA</span><span>FAA Part 107 · Remote ID compliant</span></div></footer>
+
+<section class="band" id="privacy">
+  <div class="wrap">
+    <div class="legal">
+      <h2>Privacy</h2>
+      <p>The quote form collects your name, email, phone and project details so we can reply to your request. That information is sent to our business mailbox through a form service and is not sold or shared with anyone else. We don't use advertising trackers. To have your details deleted, email hello@northlightaerial.com.</p>
+      <p>Aerial imagery is captured only on sites where we have the client's authorization, under FAA Part 107 and applicable state and local rules.</p>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap"><span>© 2026 Northlight Aerial Services LLC · NLA</span><span>FAA Part 107 · Remote ID compliant · <a href="#privacy">Privacy</a></span></div></footer>
 
 <script>
 (function(){
