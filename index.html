@@ -44,6 +44,9 @@
   --accent:#4fb3ba;--accent-ink:#0e1b1c;--panel:#1d2126;color-scheme:dark;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:64px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
 a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -58,11 +61,17 @@ p{margin:0}
 
 /* top strip */
 .strip{border-bottom:1px solid var(--line)}
+.strip{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+.nav{display:flex;gap:1.1rem;align-items:center;flex-wrap:wrap;font-size:.85rem}
+.nav a{text-decoration:none;color:var(--muted)}.nav a:hover{color:var(--fg)}
+.nav .navcta{color:var(--accent);font-weight:600}
+@media (max-width:560px){.nav a:not(.navcta){display:none}}
+
 .strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:.75rem;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-size:1.15rem;font-weight:500}
 .mono{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;font-weight:500;color:var(--accent-ink);background:var(--accent);padding:.25rem .45rem .2rem .55rem;border-radius:2px;line-height:1}
 .brand svg{width:26px;height:26px;flex:none}
-.coords{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em}
 
 /* hero */
 .hero{position:relative;overflow:hidden;color:#f6f4ef;background:#0e2a2d}
@@ -137,6 +146,7 @@ p{margin:0}
 .rate-note{margin-top:1rem;font-size:.85rem;color:var(--muted);max-width:60ch}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;counter-reset:step}
 .step{display:grid;gap:.5rem;align-content:start;padding-top:1rem;border-top:1px solid var(--line);position:relative}
+.why .step::before{content:none}
 .step::before{counter-increment:step;content:counter(step,decimal-leading-zero);font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--accent)}
 .step p{color:var(--muted);font-size:.95rem}
 .faq{display:grid;gap:0;border-top:1px solid var(--line)}
@@ -155,6 +165,18 @@ p{margin:0}
 footer .wrap a{color:inherit}
 @media (max-width:860px){.rates{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.area{grid-template-columns:1fr}.area ul{columns:1}}
 @media (max-width:520px){.rates{grid-template-columns:1fr}}
+.prep ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 2rem;max-width:62rem}
+.prep li{padding:.7rem 0;border-bottom:1px solid var(--line);color:var(--muted);font-size:.95rem;padding-left:1.4rem;position:relative}
+.prep li::before{content:"";position:absolute;left:0;top:1.05rem;width:.6rem;height:.6rem;border:1.5px solid var(--accent);border-radius:1px}
+.prep li b{color:var(--fg);font-weight:500}
+.about{display:grid;grid-template-columns:minmax(220px,1fr) 2fr;gap:3rem;align-items:start}
+.about p{color:var(--muted);margin-top:1rem;max-width:60ch}
+.portrait{aspect-ratio:4/5;max-width:100%;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center}
+.portrait span{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.14em}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.about-facts{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line)}
+.about-facts div{display:grid;gap:.15rem}.about-facts .v{font-family:var(--mono);font-size:.9rem}
+@media (max-width:760px){.prep ul{grid-template-columns:1fr}.about{grid-template-columns:1fr}.portrait{max-width:280px}}
 footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
 
 @media (max-width:760px){
@@ -179,7 +201,9 @@ footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap
       <span class="mono" aria-label="NLA">NLA</span>
       Northlight Aerial
     </div>
-    <div class="coords">40.58° N · 74.15° W · NJ / NYC METRO</div>
+    <nav class="nav" aria-label="Sections">
+      <a href="#services">Services</a><a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#about">About</a><a href="#contact" class="navcta">Get a quote</a>
+    </nav>
   </div>
 </header>
 
@@ -205,6 +229,20 @@ footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap
       <div><span>Deliverables</span><span>Graded video, stills, orthomosaics, 3D models</span></div>
       <div><span>Coverage</span><span>General liability with UAS endorsement, COI on request</span></div>
       <div><span>NYC</span><span>NYPD UAS permit applications handled</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="why">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>Why Northlight</h2>
+      <p>Drone footage is easy to get and hard to get right. The difference is what happens before the props spin.</p>
+    </div>
+    <div class="steps why">
+      <div class="step"><h3>Planned, not improvised</h3><p>Every job gets an airspace check, a shot list or flight grid, and a written pre-flight checklist. The founder spends his weekdays running infrastructure for a Fortune 100 company; that habit of documenting everything comes to the job site.</p></div>
+      <div class="step"><h3>One vendor, two kinds of work</h3><p>Marketing video and inspection imagery from the same operator, the same insurance certificate, and the same invoice. Developers and property managers don't need two phone numbers.</p></div>
+      <div class="step"><h3>Fixed quote, fixed delivery</h3><p>The price you're quoted is the price you pay, and files arrive within 48 hours of the flight. If weather cancels the window, we reschedule at no charge.</p></div>
     </div>
   </div>
 </section>
@@ -285,6 +323,26 @@ footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap
   </div>
 </section>
 
+<section class="band" id="prep">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>Before we arrive</h2>
+      <p>For real estate and property shoots. Ten minutes of prep is the difference between a good exterior and a great one.</p>
+    </div>
+    <div class="prep">
+      <ul>
+        <li><b>Cars off the driveway</b> and out of the street frontage if possible.</li>
+        <li><b>Bins, hoses and toys</b> out of sight; patio furniture set as you'd want it photographed.</li>
+        <li><b>Lawn cut and leaves cleared</b> within a day or two of the shoot.</li>
+        <li><b>Pool uncovered and clean</b>; water features running.</li>
+        <li><b>Exterior lights on</b> for twilight shoots, interior lights on in street-facing rooms.</li>
+        <li><b>Tell the neighbors</b> a drone will be flying for about 30 minutes; it avoids questions mid-shoot.</li>
+        <li><b>Gate codes and access</b> sent the day before, along with any areas to avoid.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="process">
   <div class="wrap">
     <div class="band-head">
@@ -333,6 +391,25 @@ footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap
         <li><b>Brooklyn, Queens, Manhattan</b> — with NYPD permit</li>
         <li><b>Long Island</b> — Nassau and western Suffolk</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="portrait" aria-label="Portrait placeholder"><span>PHOTO</span></div>
+      <div>
+        <div class="eyebrow">Behind the controls</div>
+        <h2 style="margin-top:.5rem">Carlos Abreu, founder and pilot</h2>
+        <p>Carlos has flown DJI and FPV aircraft for years, most recently shooting the Colorado and Utah footage on this page from the back of an overland rig. By day he's a senior infrastructure engineer at a Fortune 100 financial firm, which is where the checklists, the documentation, and the low tolerance for surprises come from.</p>
+        <p>Northlight Aerial Services LLC is based in Avenel, New Jersey, and flies under FAA Part 107 with liability coverage for every job. Portuguese and English spoken.</p>
+        <div class="about-facts">
+          <div><span class="eyebrow">Certificate</span><span class="v">FAA Part 107</span></div>
+          <div><span class="eyebrow">Aircraft</span><span class="v">DJI Air 2S</span></div>
+          <div><span class="eyebrow">Based</span><span class="v">Avenel, NJ</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
