@@ -65,9 +65,18 @@ p{margin:0}
 .coords{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em}
 
 /* hero */
-.hero .wrap{padding-block:4rem 3rem;display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:end}
+.hero{position:relative;overflow:hidden;color:#f6f4ef;background:#0e2a2d}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero video{opacity:0;transition:opacity .8s ease}.hero video.on{opacity:1}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(8,22,24,.82) 0%,rgba(8,22,24,.55) 55%,rgba(8,22,24,.35) 100%),linear-gradient(0deg,rgba(8,22,24,.7) 0%,rgba(8,22,24,0) 40%)}
+.hero .wrap{position:relative;z-index:1;padding-block:5rem 3.5rem;display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:end;min-height:min(78vh,720px)}
+.hero .eyebrow{color:#b9c4c6}.hero .lede{color:#d8dede}
+.hero .btn.ghost{color:#f6f4ef;border-color:rgba(246,244,239,.4)}
+.hero .spec{border-color:rgba(246,244,239,.25);background:rgba(8,22,24,.45);backdrop-filter:blur(6px);padding:0 .9rem;border-radius:3px}
+.hero .spec div{border-color:rgba(246,244,239,.18)}.hero .spec span:last-child{color:#c9d2d3}
+@media (prefers-reduced-motion:reduce){.hero video{display:none}}
 .hero h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02}
-.hero h1 em{font-style:italic;color:var(--accent)}
+.hero h1 em{font-style:italic;color:#7fd3d9}
 .lede{font-size:1.1rem;max-width:34rem;color:var(--muted);margin-top:1.25rem}
 .cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.75rem}
 .spec{border-top:1px solid var(--line);font-family:var(--mono);font-size:.78rem}
@@ -98,6 +107,7 @@ p{margin:0}
 .frame::before{left:50%;top:0;bottom:0;width:1px}
 .frame::after{top:50%;left:0;right:0;height:1px}
 .frame span{position:relative;font-family:var(--mono);font-size:.72rem;color:var(--muted);background:var(--panel);padding:.2rem .5rem;text-align:center}
+.still{display:block;width:100%;max-width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);background:var(--panel)}
 .cap{font-size:.85rem;color:var(--muted);margin-top:.5rem}
 
 /* contact */
@@ -146,6 +156,10 @@ footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap
 </header>
 
 <section class="hero">
+  <img class="poster" src="/hero-poster.jpg" alt="" aria-hidden="true">
+  <video id="heroVideo" muted loop playsinline preload="metadata" poster="/hero-poster.jpg" aria-hidden="true">
+    <source src="/hero.mp4" type="video/mp4">
+  </video>
   <div class="wrap">
     <div>
       <div class="eyebrow">FAA Part 107 · Licensed &amp; insured</div>
@@ -220,10 +234,9 @@ footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap
       <p>Selected frames. Full reels and sample inspection reports available on request.</p>
     </div>
     <div class="work">
-      <!-- PLACEHOLDERS: replace each .frame with <img src="..."> stills from your reel and update the captions -->
-      <div><div class="frame"><span>SAN JUAN MOUNTAINS · CO</span></div><p class="cap">Alpine reveal, 4K — from the Colorado overland series.</p></div>
-      <div><div class="frame"><span>MOAB · UT</span></div><p class="cap">Canyon tracking shot at golden hour.</p></div>
-      <div><div class="frame"><span>NEW JERSEY · COMING SOON</span></div><p class="cap">Local real estate and inspection work, added as it's delivered.</p></div>
+      <div><img class="still" src="/work-colorado-lake.jpg" alt="Aerial view of an alpine lake ringed by spruce forest in Colorado" loading="lazy"><p class="cap">Colorado — alpine lake, low tracking shot over water.</p></div>
+      <div><img class="still" src="/work-moab-canyon.jpg" alt="Aerial view of red sandstone cliffs above the Colorado River near Moab" loading="lazy"><p class="cap">Moab, Utah — canyon reveal above the Colorado River.</p></div>
+      <div><img class="still" src="/work-moab-desert.jpg" alt="High aerial view of desert flats and distant ridgelines near Moab" loading="lazy"><p class="cap">Moab, Utah — high wide over the flats, mapping-style perspective.</p></div>
     </div>
   </div>
 </section>
@@ -270,6 +283,12 @@ footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap
 <footer><div class="wrap"><span>© 2026 Northlight Aerial Services LLC · NLA</span><span>FAA Part 107 · Remote ID compliant</span></div></footer>
 
 <script>
+(function(){
+  var v=document.getElementById('heroVideo');
+  if(!v||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  v.addEventListener('playing',function(){v.classList.add('on')});
+  var p=v.play(); if(p&&p.catch)p.catch(function(){});
+})();
 (function(){
   var f=document.getElementById('quote'),st=document.getElementById('q-status'),btn=document.getElementById('q-send');
   if(!f)return;
