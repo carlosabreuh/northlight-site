@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Northlight Aerial — FAA Part 107 drone services in New Jersey and NYC: cinematic 8K video, real estate, facade and roof inspection, RTK mapping.">
+<meta property="og:title" content="Northlight Aerial">
+<meta property="og:description" content="Aerial footage and data for people who need it done right. NJ · NYC · Long Island.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://northlightaerial.com/">
+<link rel="canonical" href="https://northlightaerial.com/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Northlight Aerial Services LLC","url":"https://northlightaerial.com","email":"hello@northlightaerial.com","address":{"@type":"PostalAddress","addressLocality":"Avenel","addressRegion":"NJ","postalCode":"07001","addressCountry":"US"},"areaServed":["New Jersey","New York City","Long Island"],"description":"FAA Part 107 drone services: cinematic video, real estate, inspection and mapping."}
+</script>
+<title>Northlight Aerial</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a flight-log register — a slim top rule carrying coordinates, then wide editorial bands with left-aligned type and hairline survey grid lines. */
+:root{
+  --bg:#f6f4ef;        /* paper with a warm cast */
+  --fg:#1a1d22;
+  --muted:#5e636b;
+  --line:#d8d3c8;
+  --accent:#0d5c63;    /* deep teal — survey ink */
+  --accent-ink:#ffffff;
+  --panel:#ebe7df;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181c;--fg:#ebe8e1;--muted:#a3a7ad;--line:#2d3238;
+    --accent:#4fb3ba;--accent-ink:#0e1b1c;--panel:#1d2126;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181c;--fg:#ebe8e1;--muted:#a3a7ad;--line:#2d3238;
+  --accent:#4fb3ba;--accent-ink:#0e1b1c;--panel:#1d2126;color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.55;font-size:16px}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--display);font-weight:300;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.1}
+h3{font-size:1.25rem;font-weight:500}
+p{margin:0}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;padding:.8rem 1.3rem;border-radius:3px;font-weight:600;font-size:.95rem}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+
+/* top strip */
+.strip{border-bottom:1px solid var(--line)}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-block:.75rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--display);font-size:1.15rem;font-weight:500}
+.brand svg{width:26px;height:26px;flex:none}
+.coords{font-family:var(--mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+
+/* hero */
+.hero .wrap{padding-block:4rem 3rem;display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:end}
+.hero h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.lede{font-size:1.1rem;max-width:34rem;color:var(--muted);margin-top:1.25rem}
+.cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.75rem}
+.spec{border-top:1px solid var(--line);font-family:var(--mono);font-size:.78rem}
+.spec div{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--line)}
+.spec span:last-child{color:var(--muted);text-align:right;min-width:0}
+
+/* services */
+.band{border-top:1px solid var(--line)}
+.band .wrap{padding-block:3.5rem}
+.band-head{display:grid;grid-template-columns:1fr 2fr;gap:2rem;margin-bottom:2rem}
+.band-head p{color:var(--muted);max-width:36rem}
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.svc{padding:1.5rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:.6rem;align-content:start;min-width:0}
+.svc .eyebrow{color:var(--accent)}
+.svc p{color:var(--muted);font-size:.95rem}
+.svc ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.9rem;display:grid;gap:.2rem}
+
+/* credentials */
+.creds{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.cred{display:grid;gap:.35rem}
+.cred b{font-family:var(--display);font-size:1.6rem;font-weight:300;line-height:1}
+.cred span{font-size:.9rem;color:var(--muted)}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.frame{aspect-ratio:16/10;max-width:100%;background:var(--panel);border:1px solid var(--line);position:relative;display:grid;place-items:center;overflow:hidden}
+.frame::before,.frame::after{content:"";position:absolute;background:var(--line)}
+.frame::before{left:50%;top:0;bottom:0;width:1px}
+.frame::after{top:50%;left:0;right:0;height:1px}
+.frame span{position:relative;font-family:var(--mono);font-size:.72rem;color:var(--muted);background:var(--panel);padding:.2rem .5rem;text-align:center}
+.cap{font-size:.85rem;color:var(--muted);margin-top:.5rem}
+
+/* contact */
+.contact{background:var(--panel)}
+.contact .wrap{padding-block:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact p{color:var(--muted);max-width:32rem;margin-top:.75rem}
+.lines{display:grid;gap:.9rem;align-content:start}
+.line{display:grid;gap:.15rem}
+.line .v{font-family:var(--mono);font-size:1rem;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;word-break:break-all}
+.copy{font:inherit;font-family:var(--body);font-size:.75rem;border:1px solid var(--line);background:transparent;color:var(--fg);padding:.2rem .5rem;border-radius:3px;cursor:pointer}
+.qform{display:grid;gap:.8rem;margin-bottom:1.25rem}
+.qform label{display:grid;gap:.3rem;font-size:.8rem;color:var(--muted);min-width:0}
+.qform input,.qform select,.qform textarea{font:inherit;font-size:.95rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:.55rem .65rem;width:100%;min-width:0}
+.qform input:focus-visible,.qform select:focus-visible,.qform textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.hp{position:absolute;left:-9999px;opacity:0}
+.fbar{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.fstatus{font-size:.85rem;color:var(--muted)}
+@media (max-width:520px){.f2{grid-template-columns:1fr}}
+footer .wrap{padding-block:1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;gap:2rem;padding-block:3rem 2.5rem}
+  .band-head,.contact .wrap{grid-template-columns:1fr;gap:1.25rem}
+  .services{grid-template-columns:1fr}
+  .creds{grid-template-columns:repeat(2,1fr)}
+  .work{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .btn{transition:transform .15s ease}
+  .btn:hover{transform:translateY(-1px)}
+}
+</style>
+</head>
+<body>
+
+<header class="strip">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="11.5" fill="none" stroke="currentColor" stroke-width="1.2"/><line x1="13" y1="1.5" x2="13" y2="24.5" stroke="currentColor" stroke-width="1.2"/><line x1="1.5" y1="13" x2="24.5" y2="13" stroke="currentColor" stroke-width="1.2" opacity=".35"/><circle cx="13" cy="13" r="2.2" fill="var(--accent)"/></svg>
+      Northlight Aerial
+    </div>
+    <div class="coords">40.58° N · 74.15° W · NJ / NYC METRO</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">FAA Part 107 · Licensed &amp; insured</div>
+      <h1 style="margin-top:.75rem">Aerial footage and data for people who need it <em>done right.</em></h1>
+      <p class="lede">Cinematic 8K video for productions and real estate, and survey-grade inspection and mapping for construction, utilities and engineers. Serving New Jersey and the five boroughs.</p>
+      <div class="cta">
+        <a class="btn" href="#contact">Request a quote</a>
+        <a class="btn ghost" href="#services">See services</a>
+      </div>
+    </div>
+    <div class="spec" aria-label="Operating specifications">
+      <div><span>Aircraft</span><span>DJI cinema &amp; enterprise platforms</span></div>
+      <div><span>Formats</span><span>Up to 8K · ProRes · RAW · 4K/120</span></div>
+      <div><span>Positioning</span><span>RTK-capable, centimeter-level</span></div>
+      <div><span>Deliverables</span><span>Graded video, stills, orthomosaics, 3D models</span></div>
+      <div><span>Coverage</span><span>General liability with UAS endorsement, COI on request</span></div>
+      <div><span>NYC</span><span>NYPD UAS permit applications handled</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>Two kinds of work, one standard.</h2>
+      <p>Most operators do one or the other. We fly the same aircraft, flight planning and insurance for both, so a developer can get marketing video and a facade inspection from one vendor.</p>
+    </div>
+    <div class="services">
+      <div class="svc">
+        <div class="eyebrow">Cinematic</div>
+        <h3>Film &amp; commercial production</h3>
+        <p>Full-frame 8K aerials for commercials, documentaries and narrative work. Interchangeable DL lenses, 360° unobstructed gimbal, dual-operator capable.</p>
+        <ul><li>ProRes RAW / CinemaDNG delivery</li><li>LUT-matched to your A-cam</li><li>Day rate or per-shot</li></ul>
+      </div>
+      <div class="svc">
+        <div class="eyebrow">Real estate</div>
+        <h3>Listings &amp; developments</h3>
+        <p>Exterior video, stills and twilight shoots for brokers and developers. Fast turnaround, delivered in MLS-ready and social formats.</p>
+        <ul><li>48-hour standard delivery</li><li>Stills, 60–90s edit, raw clips</li><li>Volume pricing for brokerages</li></ul>
+      </div>
+      <div class="svc">
+        <div class="eyebrow">Inspection</div>
+        <h3>Facade, roof &amp; infrastructure</h3>
+        <p>High-resolution, geotagged inspection imagery for engineers and property managers. Supplements FISP / Local Law 11 cycles and roof condition assessments.</p>
+        <ul><li>Annotated photo sets</li><li>Thermal available on request</li><li>Engineer-ready reports</li></ul>
+      </div>
+      <div class="svc">
+        <div class="eyebrow">Mapping</div>
+        <h3>Survey &amp; construction progress</h3>
+        <p>RTK-referenced orthomosaics, elevation models and 3D meshes. Monthly progress flights for GCs, stockpile volumes, pre-construction site documentation.</p>
+        <ul><li>GeoTIFF, LAS, OBJ outputs</li><li>Works with your survey control</li><li>Recurring flight schedules</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="creds">
+      <div class="cred"><b>Part 107</b><span>FAA Remote Pilot Certificate</span></div>
+      <div class="cred"><b>Insured</b><span>General liability with UAS coverage, COI on request</span></div>
+      <div class="cred"><b>NJ LLC</b><span>Northlight Aerial Services LLC, est. 2026, Avenel NJ</span></div>
+      <div class="cred"><b>NJ · NYC · LI</b><span>LAANC authorizations and NYPD permits handled per job</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>Recent work</h2>
+      <p>Selected frames. Full reels and sample inspection reports available on request.</p>
+    </div>
+    <div class="work">
+      <!-- PLACEHOLDERS: replace each .frame with <img src="..."> stills from your reel and update the captions -->
+      <div><div class="frame"><span>SAN JUAN MOUNTAINS · CO</span></div><p class="cap">Alpine reveal, 4K — from the Colorado overland series.</p></div>
+      <div><div class="frame"><span>MOAB · UT</span></div><p class="cap">Canyon tracking shot at golden hour.</p></div>
+      <div><div class="frame"><span>NEW JERSEY · COMING SOON</span></div><p class="cap">Local real estate and inspection work, added as it's delivered.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Tell us about the shoot or the site.</h2>
+      <p>Send the location, the date window and what you need delivered. We'll reply within one business day with availability, airspace notes and a quote.</p>
+    </div>
+    <div class="lines">
+      <form id="quote" class="qform" novalidate>
+        <!-- Get a free access key at https://web3forms.com (enter hello@northlightaerial.com), paste it below -->
+        <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-ACCESS-KEY">
+        <input type="hidden" name="subject" value="Quote request — northlightaerial.com">
+        <input type="hidden" name="from_name" value="Northlight Aerial website">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+        <div class="f2">
+          <label>Name<input id="q-name" name="name" type="text" required autocomplete="name"></label>
+          <label>Email<input id="q-email" name="email" type="email" required autocomplete="email"></label>
+        </div>
+        <div class="f2">
+          <label>Phone<input id="q-phone" name="phone" type="tel" autocomplete="tel"></label>
+          <label>Type of work
+            <select id="q-type" name="type">
+              <option>Real estate</option><option>Film / commercial</option><option>Inspection</option><option>Mapping / survey</option><option>Other</option>
+            </select>
+          </label>
+        </div>
+        <label>Location &amp; date window<input id="q-where" name="location" type="text" placeholder="Address or site, and when" required></label>
+        <label>What do you need delivered?<textarea id="q-msg" name="message" rows="4" required></textarea></label>
+        <div class="fbar">
+          <button class="btn" type="submit" id="q-send">Send request</button>
+          <span id="q-status" class="fstatus" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+      <div class="line"><span class="eyebrow">Or email</span><span class="v"><span id="em">hello@northlightaerial.com</span><button class="copy" data-copy="em">Copy</button></span></div>
+      <div class="line"><span class="eyebrow">Based in</span><span class="v">Avenel, New Jersey · serving NJ, NYC &amp; Long Island</span></div>
+      <div class="line"><span class="eyebrow">Hours</span><span class="v">Mon–Sat, sunrise to sunset flights</span></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Northlight Aerial Services LLC</span><span>FAA Part 107 · Remote ID compliant</span></div></footer>
+
+<script>
+(function(){
+  var f=document.getElementById('quote'),st=document.getElementById('q-status'),btn=document.getElementById('q-send');
+  if(!f)return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){f.reportValidity();return}
+    btn.disabled=true;st.textContent='Sending…';
+    var data=Object.fromEntries(new FormData(f).entries());
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.json()})
+      .then(function(j){
+        if(j.success){st.textContent='Sent. We’ll reply within one business day.';f.reset()}
+        else{throw new Error(j.message||'failed')}
+      })
+      .catch(function(){st.textContent='Couldn’t send — please email hello@northlightaerial.com directly.'})
+      .finally(function(){btn.disabled=false});
+  });
+})();
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=document.getElementById(b.dataset.copy).textContent;
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)};
+    try{navigator.clipboard.writeText(t).then(done,function(){sel();done()})}catch(e){sel();done()}
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById(b.dataset.copy));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+  });
+});
+</script>
+</body>
+</html>
